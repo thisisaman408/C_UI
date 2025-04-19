@@ -64,11 +64,14 @@ function App() {
 	const handleSubmit = async (inputs: MappedInputs) => {
 		setloading(true);
 		try {
-			const response = await fetch('http://localhost:3001/predict', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(inputs),
-			});
+			const response = await fetch(
+				'https://c-backend-sy90.onrender.com/predict',
+				{
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(inputs),
+				}
+			);
 			const result: PredictionResponse = await response.json();
 			setPrediction(result.prediction);
 		} catch (error) {
